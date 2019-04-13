@@ -52,9 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CookController\IT1_CookControllerTest.cs" />
-    <Compile Include="CookController\IT2_CookControllerTest.cs" />
-    <Compile Include="CookController\IT3_CookControllerTest.cs" />
+    <Compile Include="IT1_CookControllerTest.cs" />
+    <Compile Include="IT2_CookControllerTest.cs" />
+    <Compile Include="IT3_CookControllerTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
