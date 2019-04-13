@@ -1,11 +1,12 @@
-﻿using MicrowaveOvenClasses.Controllers;
-using NSubstitute;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Interfaces;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace Microwave.Test.Integration
 {
@@ -21,7 +22,7 @@ namespace Microwave.Test.Integration
 
         [SetUp]
         public void SetUp()
-        {   
+        {
             _userInterface = Substitute.For<IUserInterface>();
             _timer = Substitute.For<ITimer>();
             _output = Substitute.For<IOutput>();
@@ -42,7 +43,7 @@ namespace Microwave.Test.Integration
             int time = 10;
             Assert.That(() => _uut.StartCooking(power, time), Throws.Exception);
         }
-        
+
         [TestCase(1)]
         [TestCase(50)]
         [TestCase(100)]
@@ -77,7 +78,7 @@ namespace Microwave.Test.Integration
             int time = 10;
             _uut.StartCooking(power, time);
 
-            _output.Received(1).OutputLine(Arg.Is<string>(str => 
+            _output.Received(1).OutputLine(Arg.Is<string>(str =>
                 str.Contains($"{power}")));
         }
 
