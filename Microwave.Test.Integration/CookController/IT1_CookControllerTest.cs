@@ -28,7 +28,7 @@ namespace Microwave.Test.Integration
             _display = Substitute.For<IDisplay>();
 
             _powerTube = new PowerTube(_output);
-            _uut = new CookController(_timer, _display, _powerTube, _userInterface);
+            _uut = new MicrowaveOvenClasses.Controllers.CookController(_timer, _display, _powerTube, _userInterface);
         }
 
         #region Powertube
