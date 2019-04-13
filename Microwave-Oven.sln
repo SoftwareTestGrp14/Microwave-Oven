@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwave-Oven", "Microwave-Oven\Microwave-Oven.csproj", "{5E62B688-D7B7-4B6A-A26F-D4E30B60A434}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwave.Application", "Microwave.Application\Microwave.Application.csproj", "{403619F7-9DFE-4C73-BEEF-C1C405CEC63D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwave.Application", "..\Microwave-integration\MicrowaveOven\Microwave.Application\Microwave.Application.csproj", "{403619F7-9DFE-4C73-BEEF-C1C405CEC63D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microwave.Test.Integration", "Microwave.Test.Integration\Microwave.Test.Integration.csproj", "{13DFBEF4-24BE-4885-819B-0DD4488B23E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microwave.Test.Unit", "Microwave.Test.Unit\Microwave.Test.Unit.csproj", "{2B2735BA-EF0A-42C4-8457-25786ACF90D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicrowaveOvenClasses", "MicrowaveOvenClasses\MicrowaveOvenClasses.csproj", "{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5E62B688-D7B7-4B6A-A26F-D4E30B60A434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E62B688-D7B7-4B6A-A26F-D4E30B60A434}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E62B688-D7B7-4B6A-A26F-D4E30B60A434}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E62B688-D7B7-4B6A-A26F-D4E30B60A434}.Release|Any CPU.Build.0 = Release|Any CPU
 		{403619F7-9DFE-4C73-BEEF-C1C405CEC63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{403619F7-9DFE-4C73-BEEF-C1C405CEC63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{403619F7-9DFE-4C73-BEEF-C1C405CEC63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{403619F7-9DFE-4C73-BEEF-C1C405CEC63D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13DFBEF4-24BE-4885-819B-0DD4488B23E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13DFBEF4-24BE-4885-819B-0DD4488B23E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13DFBEF4-24BE-4885-819B-0DD4488B23E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13DFBEF4-24BE-4885-819B-0DD4488B23E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2735BA-EF0A-42C4-8457-25786ACF90D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2735BA-EF0A-42C4-8457-25786ACF90D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2735BA-EF0A-42C4-8457-25786ACF90D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2735BA-EF0A-42C4-8457-25786ACF90D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
