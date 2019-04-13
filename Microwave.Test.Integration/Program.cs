@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microwave.Test.Integration
+namespace Microwave.Test.Unit
 {
     class Program
     {
