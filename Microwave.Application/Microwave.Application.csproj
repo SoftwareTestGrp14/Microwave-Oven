@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{403619F7-9DFE-4C73-BEEF-C1C405CEC63D}</ProjectGuid>
+    <ProjectGuid>{BACBE9C3-C80E-43D0-A2EC-681576E720AF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Microwave.Application</RootNamespace>
     <AssemblyName>Microwave.Application</AssemblyName>

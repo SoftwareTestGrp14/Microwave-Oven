@@ -1,11 +1,11 @@
-﻿using NSubstitute;
+﻿using MicrowaveOvenClasses.Controllers;
+using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Interfaces;
-using MicrowaveOvenClasses.Controllers;
 
 namespace Microwave.Test.Integration
 {
@@ -28,7 +28,7 @@ namespace Microwave.Test.Integration
             _display = Substitute.For<IDisplay>();
 
             _powerTube = new PowerTube(_output);
-            _uut = new MicrowaveOvenClasses.Controllers.CookController(_timer, _display, _powerTube, _userInterface);
+            _uut = new CookController(_timer, _display, _powerTube, _userInterface);
         }
 
         #region Powertube

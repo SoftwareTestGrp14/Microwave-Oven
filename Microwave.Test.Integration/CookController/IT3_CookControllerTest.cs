@@ -29,7 +29,7 @@ namespace Microwave.Test.Integration.CookController
             _timer = new Timer();
             _powerTube = new PowerTube(_output);
 
-            //_userInterface = new UserInterface();
+            _userInterface = new UserInterface()
             _uut = new MicrowaveOvenClasses.Controllers.CookController(_timer, _display, _powerTube, _userInterface);
         }
 

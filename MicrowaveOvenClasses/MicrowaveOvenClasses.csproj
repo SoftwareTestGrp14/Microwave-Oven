@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}</ProjectGuid>
+    <ProjectGuid>{6C8A89CD-AAF2-480C-8CE0-72A1444723A7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MicrowaveOvenClasses</RootNamespace>

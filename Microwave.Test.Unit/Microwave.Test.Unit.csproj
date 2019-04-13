@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B2735BA-EF0A-42C4-8457-25786ACF90D9}</ProjectGuid>
+    <ProjectGuid>{DFCBC8B7-46F1-4D14-B4AB-C1331916F948}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microwave.Test.Unit</RootNamespace>
