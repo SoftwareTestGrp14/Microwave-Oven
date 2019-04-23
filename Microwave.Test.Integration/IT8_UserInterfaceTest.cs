@@ -17,13 +17,13 @@ namespace Microwave.Test.Integration
         private IButton _timerBtn;
         private IButton _startCancelBtn;
         private IButton _powerBtn;
-        private IDoor _door;
+        private IDoor _uut;
         private ICookController _cookController;
         private IDisplay _display;
         private ITimer _timer;
         private IPowerTube _powerTube;
         private IOutput _output;
-        private IUserInterface _uut;
+        private IUserInterface _userInterface;
 
         [SetUp]
         public void SetUp()
@@ -32,13 +32,13 @@ namespace Microwave.Test.Integration
             _startCancelBtn = Substitute.For<IButton>();
             _powerBtn = Substitute.For<IButton>();
             _output = Substitute.For<IOutput>();
-            _door = new Door();
+            _uut = new Door();
             _light = new Light(_output);
             _timer = new Timer();
             _powerTube = new PowerTube(_output);
             _display = new Display(_output);
             _cookController = new CookController(_timer, _display, _powerTube);
-            _uut = new MicrowaveOvenClasses.Controllers.UserInterface(_powerBtn, _timerBtn, _startCancelBtn, _door, _display, _light, _cookController);
+            _userInterface = new MicrowaveOvenClasses.Controllers.UserInterface(_powerBtn, _timerBtn, _startCancelBtn, _door, _display, _light, _cookController);
         }
 
         [Test]
@@ -47,7 +47,7 @@ namespace Microwave.Test.Integration
             //State is already READY
 
             //Trigger the event
-            _door.Open();
+            _uut.Open();
 
             //Check if the light gets turned on
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned on")));
@@ -60,7 +60,7 @@ namespace Microwave.Test.Integration
             _powerBtn.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             //Trigger the event
-            _door.Open();
+            _uut.Open();
 
             //Check if the light gets turned on
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned on")));
@@ -74,7 +74,7 @@ namespace Microwave.Test.Integration
             _timerBtn.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             //Trigger the event
-            _door.Open();
+            _uut.Open();
 
             //Check if the light gets turned on
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned on")));
@@ -89,7 +89,7 @@ namespace Microwave.Test.Integration
             _startCancelBtn.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             //Trigger the event
-            _door.Open();
+            _uut.Open();
 
             //Check if the light gets turned on
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned on")));
@@ -102,10 +102,10 @@ namespace Microwave.Test.Integration
         public void DoorClosedCalled_UserInterfaceStateDOOROPEN_LightTurnOff()
         {
             //Setting the state
-            _door.Open();
+            _uut.Open();
 
             //Trigger the event
-            _door.Close();
+            _uut.Close();
 
             //Check if the light gets turned on
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned off")));
@@ -120,7 +120,7 @@ namespace Microwave.Test.Integration
             _startCancelBtn.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             //Trigger the event
-            _door.Open();
+            _uut.Open();
 
             //Check if the light gets turned on
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("PowerTube turned off")));
