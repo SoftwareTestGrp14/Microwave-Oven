@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Microwave.Test.Integration
 {
-    class IT8_UserInterfaceTest
+    class IT8_DoorTest
     {
         private ILight _light;
         private IButton _timerBtn;
@@ -38,7 +38,7 @@ namespace Microwave.Test.Integration
             _powerTube = new PowerTube(_output);
             _display = new Display(_output);
             _cookController = new CookController(_timer, _display, _powerTube);
-            _userInterface = new MicrowaveOvenClasses.Controllers.UserInterface(_powerBtn, _timerBtn, _startCancelBtn, _door, _display, _light, _cookController);
+            _userInterface = new MicrowaveOvenClasses.Controllers.UserInterface(_powerBtn, _timerBtn, _startCancelBtn, _uut, _display, _light, _cookController);
         }
 
         [Test]
