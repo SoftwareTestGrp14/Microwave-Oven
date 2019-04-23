@@ -36,7 +36,7 @@ namespace Microwave.Test.Integration
             _startCancelButton = Substitute.For<IButton>();
             _door = Substitute.For<IDoor>();
 
-            _userInterface = new UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _display, _light, _uut);
+            _userInterface = new MicrowaveOvenClasses.Controllers.UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _display, _light, _uut);
             _timer = new Timer();
             _display = new Display(_output);
             _powerTube = new PowerTube(_output);
@@ -44,6 +44,20 @@ namespace Microwave.Test.Integration
         }
 
         #region Display
+
+
+        [Test]
+        public void StartCooking_TurnOn_OutputShows10Seconds()
+        {
+
+            int time = 10000;
+            int power = 50;
+            _uut.StartCooking(power, time);
+            Thread.Sleep(10000);
+
+            _output.Received(1).OutputLine(Arg.Is<string>(str =>
+                str.Contains("Display shows: 00:00")));
+        }
         [Test]
         public void StartCooking_TurnOn_OutputShows9Seconds()
         {
