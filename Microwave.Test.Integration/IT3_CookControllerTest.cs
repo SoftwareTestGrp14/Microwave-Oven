@@ -53,7 +53,6 @@ namespace Microwave.Test.Integration
         }
 
 
-
         [TestCase(3000)]
         [TestCase(1000)]
         public void Ready_DoorOpen_LightOn(int time)
