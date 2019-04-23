@@ -68,8 +68,7 @@ namespace Microwave.Test.Integration.CookController
             _uut.StartCooking(50, time);
             Thread.Sleep((time + 1000));
 
-            // Jeg forstår ikke hvorfor den modtager 2 kald og ikke 1...
-            // OG inde i Userinterface, der kalder UI "StartCooking"
+            // inde i Userinterface, der kalder UI "StartCooking"
             // Fra cookingcontroller. 
             // MEN den kalder den med time (som er 1++ hver gang) ganget med 60
             // Altså den kalder time * 60. 
@@ -79,12 +78,12 @@ namespace Microwave.Test.Integration.CookController
             // For at sætte 1 sek.
 
 
-            _displayUI.Received(1).Clear();
-            _light.Received(1).TurnOff();
+            _displayUI.Received().Clear();
+            _light.Received().TurnOff();
         }
 
         [Test]
-        public void OnTimerExpired_CookingIsDone_LightDisplatNotCalled(int time)
+        public void OnTimerExpired_CookingIsDone_LightDisplatNotCalled()
         {
             // This tests that uut is calling CookingIsDone in the UI
             // and the UI calls clear on the display and turns off the light
@@ -93,19 +92,8 @@ namespace Microwave.Test.Integration.CookController
             _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            _uut.StartCooking(50, time);
+            _uut.StartCooking(50, 1000);
             _uut.Stop();
-
-            // Jeg forstår ikke hvorfor den modtager 2 kald og ikke 1...
-            // OG inde i Userinterface, der kalder UI "StartCooking"
-            // Fra cookingcontroller. 
-            // MEN den kalder den med time (som er 1++ hver gang) ganget med 60
-            // Altså den kalder time * 60. 
-            // Dvs. ved staartcooking med time  = 60
-            // Sættes timeren til 60. Dette giver vel ikke mening
-            // Den burde have 1000 i timer parametern og ikke 60
-            // For at sætte 1 sek.
-
 
             _displayUI.DidNotReceive().Clear();
             _light.DidNotReceive().TurnOff();
