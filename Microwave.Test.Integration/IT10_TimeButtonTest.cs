@@ -28,7 +28,7 @@ namespace Microwave.Test.Integration
         [SetUp]
         public void SetUp()
         {
-            _door = Substitute.For<IDoor>()
+            _door = Substitute.For<IDoor>();
             _startCancelBtn = Substitute.For<IButton>();
             _powerBtn = Substitute.For<IButton>();
             _output = Substitute.For<IOutput>();

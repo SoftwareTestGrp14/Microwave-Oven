@@ -81,8 +81,10 @@ namespace Microwave.Test.Integration
             _light.Received().TurnOff();
         }
 
-        [Test]
-        public void OnTimerExpired_CookingIsDone_LightDisplatNotCalled()
+        [TestCase(1000)]
+        [TestCase(3000)]
+        [TestCase(10000)]
+        public void OnTimerExpired_CookingIsDone_LightDisplatNotCalled(int time)
         {
             // This tests that uut is calling CookingIsDone in the UI
             // and the UI calls clear on the display and turns off the light
@@ -91,10 +93,11 @@ namespace Microwave.Test.Integration
             _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            _uut.StartCooking(50, 1000);
+            _uut.StartCooking(50, time);
             _uut.Stop();
 
-            _displayUI.DidNotReceive().Clear();
+            // Receives 1 clear in UI OnStartCancelPressed state = SETTIME
+            _displayUI.Received(1).Clear();
             _light.DidNotReceive().TurnOff();
         }
 

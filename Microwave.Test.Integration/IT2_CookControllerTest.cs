@@ -67,10 +67,16 @@ namespace Microwave.Test.Integration
             // For at tjekke at timeren er enabled skal man lade den køre 
             // Og se at der bliver lavet kald til display.Showtime hver tick
 
-            
+            Thread.Sleep(time + 1000);
+
+            // Ved display burde received være _timer.Timeremaing/1000 gange
 
             _userInterface.Received(1).CookingIsDone();
-            _display.Received(time/1000).ShowTime(Arg.Any<int>(), Arg.Any<int>());
+            _display.Received().ShowTime(Arg.Is<int>(min =>
+                min.Equals((_timer.TimeRemaining / 1000) / 60)), Arg.Is<int>(sec =>
+                sec.Equals(_timer.TimeRemaining / 1000)));
+
+    
         }
 
 
@@ -102,7 +108,9 @@ namespace Microwave.Test.Integration
             Thread.Sleep(time / 2);
 
             _userInterface.DidNotReceive().CookingIsDone();
-            _display.Received().ShowTime(Arg.Any<int>(), Arg.Any<int>());
+            _display.Received().ShowTime(Arg.Is<int>(min => 
+                min.Equals((_timer.TimeRemaining/1000)/60)), Arg.Is<int>(sec => 
+                sec.Equals(_timer.TimeRemaining/1000)));
             
         }
 
