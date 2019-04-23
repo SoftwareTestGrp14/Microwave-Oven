@@ -43,6 +43,17 @@ namespace Microwave.Test.Integration.UserInterface
             _output = Substitute.For<IOutput>();
         }
 
-        
+        #region CookController
+
+        [Test]
+        public void StartCancelBtnPressedTest_StartCooking()
+        {
+            //As the default power setting is 50, we test if the powertube is outputting the expected power when the button is pressed
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            
+            _output.Received(2).OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube works with 50")));
+        }
+
+        #endregion
     }
 }
