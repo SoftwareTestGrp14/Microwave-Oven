@@ -4,8 +4,10 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Interfaces;
+using Timer = MicrowaveOvenClasses.Boundary.Timer;
 
 namespace Microwave.Test.Integration
 {
@@ -42,8 +44,19 @@ namespace Microwave.Test.Integration
         }
 
         #region Display
+        [Test]
+        public void StartCooking_TurnOn_OutputShows9Seconds()
+        {
 
-       
+            int time = 10000;
+            int power = 50;
+            _uut.StartCooking(power, time);
+            Thread.Sleep(1000);
+
+            _output.Received(1).OutputLine(Arg.Is<string>(str =>
+                str.Contains("Display shows: 00:09")));
+        }
+
 
         #endregion
 
