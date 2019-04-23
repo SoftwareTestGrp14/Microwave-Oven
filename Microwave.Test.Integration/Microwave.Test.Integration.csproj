@@ -62,8 +62,12 @@
     <Compile Include="IT1_CookControllerTest.cs" />
     <Compile Include="IT2_CookControllerTest.cs" />
     <Compile Include="IT3_CookControllerTest.cs" />
+    <Compile Include="IT4_CookControllerTest.cs" />
     <Compile Include="IT6_UserInterfaceTest.cs" />
     <Compile Include="IT5_UserInterfaceTest.cs" />
+    <Compile Include="IT7_UserInterfaceTest.cs" />
+    <Compile Include="IT8_DoorTest.cs" />
+    <Compile Include="IT9_PowerButtonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
