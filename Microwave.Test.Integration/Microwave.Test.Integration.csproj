@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IT10_TimeButtonTest.cs" />
     <Compile Include="IT1_CookControllerTest.cs" />
     <Compile Include="IT2_CookControllerTest.cs" />
     <Compile Include="IT3_CookControllerTest.cs" />
