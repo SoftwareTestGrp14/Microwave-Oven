@@ -64,6 +64,7 @@
     <Compile Include="IT3_CookControllerTest.cs" />
     <Compile Include="IT4_CookControllerTest.cs" />
     <Compile Include="IT6_UserInterfaceTest.cs" />
+    <Compile Include="IT5_UserInterfaceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
