@@ -39,7 +39,7 @@ namespace Microwave.Test.Integration
             _powerTube=new PowerTube(_output);
             _display = new Display(_output);
             _cookController = new CookController(_timer, _display, _powerTube);
-            _uut=new UserInterface(_powerBtn, _timerBtn, _startCancelBtn, _door, _display, _light, _cookController);
+            _uut=new MicrowaveOvenClasses.Controllers.UserInterface(_powerBtn, _timerBtn, _startCancelBtn, _door, _display, _light, _cookController);
         }
 
         [TestCase(1, 50, 1)]

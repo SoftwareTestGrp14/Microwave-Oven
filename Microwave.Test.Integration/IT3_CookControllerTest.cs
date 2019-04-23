@@ -46,7 +46,7 @@ namespace Microwave.Test.Integration
             
             _uut = new MicrowaveOvenClasses.Controllers.CookController(_timer, _displayUut, _powerTube);
 
-            _userInterface = new UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _displayUI, _light, _cookController);
+            _userInterface = new MicrowaveOvenClasses.Controllers.UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _displayUI, _light, _cookController);
 
             _uut.UI = _userInterface;
 
