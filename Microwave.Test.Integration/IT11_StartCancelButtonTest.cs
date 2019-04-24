@@ -53,7 +53,7 @@ namespace Microwave.Test.Integration
             //As the default power setting is 50, we test if the powertube is outputting the expected power when the button is pressed
             _uut.Press();
 
-            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("PowerTube works with 50 %")));
+            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("PowerTube works with 7 %")));
         }
 
         

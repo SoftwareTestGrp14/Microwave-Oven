@@ -156,7 +156,7 @@ namespace Microwave.Test.Unit
             // Now in SetTime
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(50, 60);
+            cooker.Received(1).StartCooking(7, 60000); //Power Rettet fr 50 til 7 da det nu er powerprocent i stedet for powerniveau.
         }
 
         [Test]
@@ -197,7 +197,7 @@ namespace Microwave.Test.Unit
             // Should call with correct values
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(100, 120);
+            cooker.Received(1).StartCooking(14, 120000);//Power Rettet fr 100 til 14 da det nu er powerprocent i stedet for powerniveau.
         }
 
         [Test]
@@ -214,7 +214,7 @@ namespace Microwave.Test.Unit
             // Should call with correct values
             startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            cooker.Received(1).StartCooking(700, 60);
+            cooker.Received(1).StartCooking(100, 60000); //Power Rettet fr 700 til 100 da det nu er powerprocent i stedet for powerniveau.
 
         }
 
