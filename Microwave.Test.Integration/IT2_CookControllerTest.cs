@@ -34,6 +34,7 @@ namespace Microwave.Test.Integration
             _uut = new MicrowaveOvenClasses.Controllers.CookController(_timer, _display, _powerTube, _userInterface);
         }
 
+
         // Man kan ikke rigtige integrationsteste timeren medd CookController som topmodul
         // Uden at bruge timeren som topmodul samtidig med CookController. 
         // Dvs. at cookcontrolleren er afhængig af timerens event
@@ -42,6 +43,24 @@ namespace Microwave.Test.Integration
         // Integrationstesten vil ikke virke hvis den ene af de 2 fejler
 
         #region Timer <> CookController
+
+        [TestCase(1000)]
+        [TestCase(2000)]
+        [TestCase(5000)]
+        public void StartCooking_TimerStarted_CorrectTime(int time)
+        {
+            _uut.StartCooking(50, time);
+            Thread.Sleep(time + 1000);
+
+            // Each second TimerTick event raised
+            // So each second when timerTick is raised showTime is called
+            // So the timer must work, if showtime is called the same number of times as input parameters of timer.Start() in seconds.
+
+            _display.Received(time/1000).ShowTime(Arg.Any<int>(), Arg.Any<int>());
+
+            // Man burde ikke at kunne sætte timeren til at være negativ tid
+        }
+
 
         [TestCase(0)]
         [TestCase(-2000)]
