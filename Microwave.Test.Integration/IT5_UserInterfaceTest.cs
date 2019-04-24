@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
+using Timer = MicrowaveOvenClasses.Boundary.Timer;
 
 namespace Microwave.Test.Integration
 {
@@ -48,6 +50,7 @@ namespace Microwave.Test.Integration
 
         #region CookController
 
+        
         [TestCase(50)]
         [TestCase(400)]
         [TestCase(700)]
@@ -66,6 +69,21 @@ namespace Microwave.Test.Integration
             
 
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube works with {powerPercentage} %")));
+        }
+
+        [Test]
+        public void StartCancelBtnPressedTest_WhileSetTime_StartCooking_CorrectTiming()
+        {
+            //First we need to enter the state COOKING
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            //Default time is 1 minute.
+            Thread.Sleep(1000);
+            
+
+            Assert.That(_timer.TimeRemaining,Is.EqualTo(59));
         }
 
         [Test]
