@@ -56,7 +56,7 @@ namespace Microwave.Test.Integration
         [TestCase(700)]
         public void StartCancelBtnPressedTest_WhileSetTime_StartCooking(int powerLevel)
         {
-            int powerPercentage = powerLevel / 7;
+            var powerPercentage = powerLevel/7;
 
             for (int pow = 0; pow < powerLevel; pow+=50)
             {
