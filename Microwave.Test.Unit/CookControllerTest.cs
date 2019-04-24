@@ -46,9 +46,10 @@ namespace Microwave.Test.Unit
         [Test]
         public void Cooking_TimerTick_DisplayCalled()
         {
-            uut.StartCooking(50, 60);
+            // Made changes. The input parameter to timer need to be en miliseconds.
+            uut.StartCooking(50, 60000+(55000));
 
-            timer.TimeRemaining.Returns(115);
+            timer.TimeRemaining.Returns(60000 + 55000);
             timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
 
             display.Received().ShowTime(1, 55);
