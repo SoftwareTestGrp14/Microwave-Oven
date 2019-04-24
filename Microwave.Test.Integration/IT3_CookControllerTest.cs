@@ -96,6 +96,7 @@ namespace Microwave.Test.Integration
             _uut.StartCooking(50, time);
             _uut.Stop();
 
+
             // Receives 1 clear in UI OnStartCancelPressed state = SETTIME
             _displayUI.Received(1).Clear();
             _light.DidNotReceive().TurnOff();
