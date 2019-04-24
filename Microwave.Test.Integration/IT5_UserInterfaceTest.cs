@@ -19,7 +19,7 @@ namespace Microwave.Test.Integration
         private IButton _startCancelButton;
         private IButton _powerButton;
         private IDoor _door;
-        private MicrowaveOvenClasses.Controllers.CookController _cookController; //Må vi overhovedet det her!?!?!?
+        private ICookController _cookController;
         private IDisplay _displayFake;
         private IDisplay _displayReal;
         private ITimer _timer;
@@ -44,7 +44,6 @@ namespace Microwave.Test.Integration
 
             _cookController = new MicrowaveOvenClasses.Controllers.CookController(_timer, _displayReal, _powerTube);
             _uut = new MicrowaveOvenClasses.Controllers.UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _displayFake, _light, _cookController);
-            _cookController.UI = _uut;
         }
 
         #region CookController
@@ -65,12 +64,12 @@ namespace Microwave.Test.Integration
         [Test]
         public void StartCancelBtnPressedTest_WhileCooking_StopCooking()
         {
-            //First we need to enter the state SETTIME
+            //First we need to enter the state COOKING
             _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            //As the default power setting is 50, we test if the powertube is outputting the expected power when the button is pressed
+            //Should stop the cooking
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("PowerTube turned off")));
@@ -79,12 +78,12 @@ namespace Microwave.Test.Integration
         [Test]
         public void DoorOpenedTest_WhileCooking_StopCooking()
         {
-            //First we need to enter the state SETTIME
+            //First we need to enter the state COOKING
             _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            //As the default power setting is 50, we test if the powertube is outputting the expected power when the button is pressed
+            //shoulf stop the cooking
             _door.Opened += Raise.EventWith(this, EventArgs.Empty);
 
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("PowerTube turned off")));

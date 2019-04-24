@@ -28,9 +28,9 @@ namespace Microwave.Test.Integration
         [SetUp]
         public void SetUp()
         {
-            _door = Substitute.For<IDoor>();
+            _door = new Door();
             _startCancelBtn = Substitute.For<IButton>();
-            _powerBtn = Substitute.For<IButton>();
+            _powerBtn = new Button();
             _output = Substitute.For<IOutput>();
             _uut = new Button();
             _light = new Light(_output);
@@ -42,11 +42,29 @@ namespace Microwave.Test.Integration
         }
 
         [Test]
-        public void DoorOpenCalled_UserInterfaceStateREADY_LightTurnOn()
+        public void TimeButtonPressed_OutPutLineCalledWith2Min()
         {
-           Assert.True(true);
+            _powerBtn.Press();
+            _uut.Press();
+            _uut.Press();
+
+            _output.Received().OutputLine("Display shows: 02:00");
         }
 
-        
+        [TestCase(5)]
+        [TestCase(1)]
+        [TestCase(10)]
+        public void TimeButtonPressed_NumberOfTimes_OutputLineCalledNumTimes(int num)
+        {
+            _powerBtn.Press();
+
+            for (int i = 0; i < num; i++)
+            {
+                _uut.Press();
+            }
+
+            _output.Received(num+1).OutputLine(Arg.Any<string>());
+        }
+
     }
 }
