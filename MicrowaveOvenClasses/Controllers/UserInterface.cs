@@ -87,7 +87,7 @@ namespace MicrowaveOvenClasses.Controllers
                 case States.SETTIME:
                     myDisplay.Clear();
                     myLight.TurnOn();
-                    myCooker.StartCooking((int)powerPercent, time*60); //Rettet til at sende PowerPercentage med.
+                    myCooker.StartCooking((int)powerPercent, time*1000*60); //Rettet til at sende PowerPercentage med.
                     myState = States.COOKING;
                     break;
                 case States.COOKING:
