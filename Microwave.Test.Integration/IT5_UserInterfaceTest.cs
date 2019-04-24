@@ -48,17 +48,24 @@ namespace Microwave.Test.Integration
 
         #region CookController
 
-        [Test]
-        public void StartCancelBtnPressedTest_WhileSetTime_StartCooking()
+        [TestCase(50)]
+        [TestCase(400)]
+        [TestCase(700)]
+        public void StartCancelBtnPressedTest_WhileSetTime_StartCooking(int powerLevel)
         {
-            //First we need to enter the state SETTIME
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            int powerPercentage = powerLevel / 7;
+
+            for (int pow = 0; pow < powerLevel; pow+=50)
+            {
+                _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            }
             _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             
             //As the default power setting is 50, we test if the powertube is outputting the expected power when the button is pressed
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             
-            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("PowerTube works with 50 %")));
+
+            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube works with {powerPercentage} %")));
         }
 
         [Test]
