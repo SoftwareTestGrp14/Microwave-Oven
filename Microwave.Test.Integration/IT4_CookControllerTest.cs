@@ -46,31 +46,22 @@ namespace Microwave.Test.Integration
         #region Display
 
 
-        [Test]
-        public void StartCooking_TurnOn_OutputShows10Seconds()
+        [TestCase(1000)]
+        [TestCase(2000)]
+        [TestCase(4000)]
+        [TestCase(10000)]
+        public void StartCooking_TurnOn_OutputShowsSeconds(int time)
         {
-
-            int time = 10000;
             int power = 50;
             _uut.StartCooking(power, time);
-            Thread.Sleep(10000);
+            Thread.Sleep(time + 1000);
 
-            _output.Received(1).OutputLine(Arg.Is<string>(str =>
-                str.Contains("Display shows: 00:00")));
+            int min = (_timer.TimeRemaining / 1000) / 60;
+            int sec = _timer.TimeRemaining / 1000;
+            _output.Received().OutputLine(Arg.Is<string>(str =>
+                str.Contains($"Display shows: {min:D2}:{sec:D2}")));
         }
-        [Test]
-        public void StartCooking_TurnOn_OutputShows9Seconds()
-        {
-
-            int time = 10000;
-            int power = 50;
-            _uut.StartCooking(power, time);
-            Thread.Sleep(1000);
-
-            _output.Received(1).OutputLine(Arg.Is<string>(str =>
-                str.Contains("Display shows: 00:09")));
-        }
-
+   
 
         #endregion
 

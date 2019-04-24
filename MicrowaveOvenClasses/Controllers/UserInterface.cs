@@ -70,7 +70,7 @@ namespace MicrowaveOvenClasses.Controllers
                     break;
             }
         }
-
+        
         public void OnStartCancelPressed(object sender, EventArgs e)
         {
             switch (myState)
