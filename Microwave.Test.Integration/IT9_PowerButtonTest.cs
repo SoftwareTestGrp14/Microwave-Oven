@@ -9,7 +9,7 @@ using MicrowaveOvenClasses.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Microwave.Test.Unit
+namespace Microwave.Test.Integration
 {
     class IT9_PowerButtonTest
     {
