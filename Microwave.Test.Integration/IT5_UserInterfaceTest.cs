@@ -56,7 +56,7 @@ namespace Microwave.Test.Integration
         [TestCase(700)]
         public void StartCancelBtnPressedTest_WhileSetTime_StartCooking(int powerLevel)
         {
-            var powerPercentage = powerLevel/7;
+            double powerPercentage = powerLevel/7;
 
             for (int pow = 0; pow < powerLevel; pow+=50)
             {
@@ -68,7 +68,7 @@ namespace Microwave.Test.Integration
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             
 
-            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube works with {powerPercentage} %")));
+            _output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube works with {(int)powerPercentage} %")));
         }
 
         [Test]

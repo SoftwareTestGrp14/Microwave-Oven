@@ -17,6 +17,7 @@ namespace MicrowaveOvenClasses.Controllers
         private ILight myLight;
         private IDisplay myDisplay;
 
+        private double powerPercent = 50/7;
         private int powerLevel = 50;
         private int time = 1;
 
@@ -51,6 +52,7 @@ namespace MicrowaveOvenClasses.Controllers
                     break;
                 case States.SETPOWER:
                     powerLevel = (powerLevel >= 700 ? 50 : powerLevel+50);
+                    powerPercent = powerLevel / 7;
                     myDisplay.ShowPower(powerLevel);
                     break;
             }
@@ -85,7 +87,7 @@ namespace MicrowaveOvenClasses.Controllers
                 case States.SETTIME:
                     myDisplay.Clear();
                     myLight.TurnOn();
-                    myCooker.StartCooking(powerLevel, time*60);
+                    myCooker.StartCooking((int)powerPercent, time*60);
                     myState = States.COOKING;
                     break;
                 case States.COOKING:
