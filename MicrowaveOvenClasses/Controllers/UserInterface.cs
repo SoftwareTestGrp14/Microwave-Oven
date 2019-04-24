@@ -17,7 +17,7 @@ namespace MicrowaveOvenClasses.Controllers
         private ILight myLight;
         private IDisplay myDisplay;
 
-        private double powerPercent = 50/7;
+        private double powerPercent = 50/7; //Sættes per default til hvad 50 Power svare til i procent.
         private int powerLevel = 50;
         private int time = 1;
 
@@ -52,7 +52,7 @@ namespace MicrowaveOvenClasses.Controllers
                     break;
                 case States.SETPOWER:
                     powerLevel = (powerLevel >= 700 ? 50 : powerLevel+50);
-                    powerPercent = powerLevel / 7;
+                    powerPercent = powerLevel / 7; //Udregner nu også PowerPercentage når Power ændres
                     myDisplay.ShowPower(powerLevel);
                     break;
             }
@@ -87,7 +87,7 @@ namespace MicrowaveOvenClasses.Controllers
                 case States.SETTIME:
                     myDisplay.Clear();
                     myLight.TurnOn();
-                    myCooker.StartCooking((int)powerPercent, time*60);
+                    myCooker.StartCooking((int)powerPercent, time*60); //Rettet til at sende PowerPercentage med.
                     myState = States.COOKING;
                     break;
                 case States.COOKING:
